@@ -65,6 +65,24 @@ public class BasicApplicationTests {
             throw new RuntimeException(e);
         }
     }
+     
+    @Test
+    public void testFindByCustomerId() throws Exception {
+        Base64.Encoder encoder = Base64.getEncoder();
+        String encoding = encoder.encodeToString((USER + ":" + PASSWORD).getBytes());
+        Invoice mockdto = new Invoice();
+        mockdto.setCustomerId(1);
+        Mockito.when(ir.findById(mockdto.getCustomerId())).thenReturn(Optional.of(mockdto));
+        Mockito.when(irm.InvoiceRequestToInvoice(new InvoiceRequest())).thenReturn(mockdto);
+        InvoiceResponse invoiceResponse = new InvoiceResponse();
+        invoiceResponse.setInvoiceId(1);
+        Mockito.when(irspm.InvoiceToInvoiceRespose(mockdto)).thenReturn(invoiceResponse);
+        this.mockMvc.perform(get("/billing/{id}", mockdto.getId()).header("Authorization", "Basic " + encoding)
+                .accept(MediaType.APPLICATION_JSON)               
+        ).andDo(print()).andExpect(status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.invoiceId").value(1));
+    }
 
     /**
      * Test call of create method, on weblayer.
@@ -103,5 +121,8 @@ public class BasicApplicationTests {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.invoiceId").value(1));
     }
+    
+   
+
 
 }

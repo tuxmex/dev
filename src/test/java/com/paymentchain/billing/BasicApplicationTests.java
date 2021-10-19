@@ -92,7 +92,6 @@ public class BasicApplicationTests {
 
     /**
      * Test call of create method, on weblayer.
-     * Other change
      */
     @Test
     public void testFindById() throws Exception {

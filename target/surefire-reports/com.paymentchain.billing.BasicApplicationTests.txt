@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: com.paymentchain.billing.BasicApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 27.901 s - in com.paymentchain.billing.BasicApplicationTests
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 23.624 s <<< FAILURE! - in com.paymentchain.billing.BasicApplicationTests
+testFindByCustomerId  Time elapsed: 0.179 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is java.util.NoSuchElementException: No value present
+	at com.paymentchain.billing.BasicApplicationTests.testFindByCustomerId(BasicApplicationTests.java:80)
+Caused by: java.util.NoSuchElementException: No value present
+	at com.paymentchain.billing.BasicApplicationTests.testFindByCustomerId(BasicApplicationTests.java:80)
+

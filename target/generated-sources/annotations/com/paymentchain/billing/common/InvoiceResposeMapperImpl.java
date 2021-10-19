@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-10-14T18:16:29-0500",
+    date = "2021-10-15T18:52:44-0500",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 14.0.2 (Private Build)"
 )
 @Component
